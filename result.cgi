@@ -13,6 +13,17 @@ puts <<~HTML
 <html>
     <head>
         <title>検索結果 - はい</title>
+        <meta name="description" content="かんたん検索" />
+        <meta name="keywords" content="ゴミ,筑波大学" />
+        <meta name="author" content="春名" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:creator" content="@egpl0">
+        <meta name="twitter:site" content="@egpl0" />
+        <meta property="og:url" content="logo.png" />
+        <meta property="og:title" content="かんたん検索" />
+        <meta property="og:description" content="かんたんに書誌を検索." />
+        <meta property="og:image" content="https://cgi.u.tsukuba.ac.jp/~s1811528/unko_mark/logo.png">
+        <link rel="icon" href="favicon.ico" />
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
     </head>
@@ -25,8 +36,8 @@ puts <<~HTML
 HTML
 
 ## 外部関数の定義
-XML::XSLT.registerExtFunc("http://my.func", "get-bookimg") {|no|
-    "https://cover.openbd.jp/#{no[0]}.jpg"
+XML::XSLT.("http://my.func", "get-bookimg") {|isbn|
+    "https://cover.openbd.jp/#{isbn[0]}.jpg"
 }
 XML::XSLT.registerExtFunc("http://my.func", "split") {|text|
     a = text[0].force_encoding('UTF-8')

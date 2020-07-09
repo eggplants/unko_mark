@@ -12,6 +12,15 @@ puts <<~HTML
 <html>
     <head>
         <title>詳細表示 - はい</title>
+        <meta name="description" content="かんたん検索" />
+        <meta name="keywords" content="ゴミ,筑波大学" />
+        <meta name="author" content="春名" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:creator" content="@egpl0">
+        <meta name="twitter:site" content="@egpl0" />
+        <meta property="og:url" content="" />
+        <meta property="og:title" content="かんたん検索" />
+        <meta property="og:description" content="かんたんに書誌を検索." />
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
     </head>
@@ -23,33 +32,11 @@ puts <<~HTML
 HTML
 
 # 外部関数の定義
-XML::XSLT.registerExtFunc("http://my.func", "get-bookimg") {|no|
-    "https://cover.openbd.jp/#{no[0]}.jpg"
-}
-XML::XSLT.registerExtFunc("http://my.func", "searchform") {
-    puts  <<~HTML
-        <form action="result.cgi" method="GET" role="form" class="form-horizontal">
-            <div class="input-group justify-content-center">
-                <input type="text" name="keyword" class="form-control" placeholder="Please Input" />
-                <select class="custom-select" name="type">
-                    <option value="title" selected>書名</option>
-                    <option value="creator">作者</option>
-                    <option value="publisher">出版者</option>
-                    <option value="description">説明</option>
-                    <option value="price">価格</option>
-                    <option value="year">年</option>
-                    <option value="isbn">説明</option>
-                    <option value="keyword">キーワード</option>
-                </select>
-                <span class="input-group-btn">
-                    <button type="submit" class="btn btn-primary">検索</button>
-                </span>
-            </div>
-        </form>
-HTML
+XML::XSLT.registerExtFunc("http://my.func", "get-bookimg") {|isbn|
+    "https://cover.openbd.jp/#{isbn[0]}.jpg"
 }
 
-# 検索件数&&検索結果リスト
+# 詳細リスト
 xslt = XML::XSLT.new
 xslt.xml = "data0511.xml"
 xslt.xsl = "detail.xsl"

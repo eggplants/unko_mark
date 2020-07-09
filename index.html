@@ -2,43 +2,54 @@
 <html lang="ja">
 
 <head>
-  <meta charset="utf-8" />
-  <title>検索 - はい</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <meta charset="utf-8" />
+    <title>トップ - はい</title>
+    <meta name="description" content="かんたん検索" />
+    <meta name="keywords" content="ゴミ,筑波大学" />
+    <meta name="author" content="春名" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:creator" content="@egpl0">
+    <meta name="twitter:site" content="@egpl0" />
+    <meta property="og:url" content="logo.png" />
+    <meta property="og:title" content="かんたん検索" />
+    <meta property="og:description" content="かんたんに書誌を検索." />
+    <meta property="og:image" content="https://cgi.u.tsukuba.ac.jp/~s1811528/unko_mark/logo.png">
+    <link rel="icon" href="favicon.ico" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
 </head>
 
 <body>
-  <nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand" href="#">かんたん検索</a>
-  </nav>
-  <div class="container">
-    <h1>LET'S 検索！</h1>
-    <form action="result.cgi" method="GET" role="form" class="form-horizontal">
-      <div class="input-group justify-content-center">
-        <input type="text" name="keyword" class="form-control" placeholder="Input Keyword" />
-        <select class="custom-select" name="type">
-          <option value="title" selected>書名</option>
-          <option value="creator">作者</option>
-          <option value="publisher">出版者</option>
-          <option value="description">説明</option>
-          <option value="price">価格</option>
-          <option value="year">年</option>
-          <option value="isbn">説明</option>
-          <option value="keyword">キーワード</option>
-        </select>
-        <span class="input-group-btn">
-          <button type="submit" class="btn btn-primary">検索</button>
-        </span>
-      </div>
-    </form>
-  </div>
-  <footer class="page-footer font-small white">
-    <div class="footer-copyright text-center py-3">
-      &copy; 2020 Copyright: Haruna(eggplants)
-      Repository: <a href="https://github.com/eggplants/unko_mark">Here.</a>
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand" href="#">かんたん検索</a>
+    </nav>
+    <div class="container">
+        <h1>LET'S 検索！</h1>
+        <form action="result.cgi" method="GET" role="form" class="form-horizontal">
+            <div class="input-group justify-content-center">
+                <input type="text" name="keyword" class="form-control" placeholder="Please Input" />
+                <select class="custom-select" name="type">
+                    <option value="title" selected>書名</option>
+                    <option value="creator">作者</option>
+                    <option value="publisher">出版者</option>
+                    <option value="description">説明</option>
+                    <option value="price">価格</option>
+                    <option value="year">年</option>
+                    <option value="isbn">説明</option>
+                    <option value="keyword">キーワード</option>
+                </select>
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-primary">検索</button>
+                </span>
+            </div>
+        </form>
     </div>
-  </footer>
+    <footer class="page-footer font-small white">
+        <div class="footer-copyright text-center py-3">
+            &copy; 2020 Copyright: Haruna(eggplants)
+            Repository: <a href="https://github.com/eggplants/unko_mark">Here.</a>
+        </div>
+    </footer>
 </body>
 
 </html>
