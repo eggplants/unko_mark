@@ -42,7 +42,13 @@
             onerror="this.src='https://books.google.co.jp/googlebooks/images/no_cover_thumb.gif'; this.removeAttribute('onerror')"/></td>
             <!-- <td><xsl:value-of select="my:get-bookimg(isbn/text())" /></td> -->
             <td><a href="detail.cgi?dp={@no}"><xsl:value-of select="title" /></a></td>
-            <td><a href="result.cgi?keyword={creator}&amp;type=creator"><xsl:value-of select="creator" /></a></td>
+            <td>
+                <xsl:for-each select="my:split(creator/text())" >
+                    <a href="result.cgi?keyword={.}&amp;type=creator">
+                        <xsl:value-of select="." />
+                    </a>
+                </xsl:for-each>
+            </td>
         </tr>
     </xsl:template>
 </xsl:stylesheet>

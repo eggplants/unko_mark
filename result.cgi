@@ -1,6 +1,7 @@
 #!/usr/bin/ruby
 require 'cgi'
 require 'xml/xslt'
+require 'json'
 
 cgi = CGI.new
 
@@ -26,6 +27,13 @@ HTML
 ## 外部関数の定義
 XML::XSLT.registerExtFunc("http://my.func", "get-bookimg") {|no|
     "https://cover.openbd.jp/#{no[0]}.jpg"
+}
+XML::XSLT.registerExtFunc("http://my.func", "split") {|text|
+    a = text[0].force_encoding('UTF-8')
+    a.split(/(，|,|、)\s*/)
+    .map {|t|
+        REXML::Document.new("<t>#{t}</t>").root
+    }
 }
 XML::XSLT.registerExtFunc("http://my.func", "searchform") {
     puts  <<~HTML
