@@ -1,21 +1,38 @@
 <!DOCTYPE html>
 <html lang="ja">
-  <head>
-    <meta charset="utf-8" />
-    <title>検索 - はい</title>
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
-    />
-  </head>
-  <body>
-    <div class="container">
-      <h1>LET'S 検索！</h1>
-      <form action="search.cgi">
-        <input type="text" id="search" />
-      </form>
-    </div>
-  </body>
+
+<head>
+  <meta charset="utf-8" />
+  <title>検索 - はい</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+</head>
+
+<body>
+  <nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand" href="#">かんたん検索</a>
+  </nav>
+  <div class="container">
+    <h1>LET'S 検索！</h1>
+    <form action="result.cgi" method="GET" role="form" class="form-horizontal">
+      <div class="input-group justify-content-center">
+        <input type="text" name="keyword" class="form-control" placeholder="Input Keyword" />
+        <select class="custom-select" name="type">
+          <option value="title" selected>書名</option>
+          <option value="creator">作者</option>
+          <option value="publisher">出版者</option>
+          <option value="description">説明</option>
+          <option value="price">価格</option>
+          <option value="year">年</option>
+          <option value="isbn">説明</option>
+          <option value="keyword">キーワード</option>
+        </select>
+        <span class="input-group-btn">
+          <button type="submit" class="btn btn-primary">検索</button>
+        </span>
+      </div>
+    </form>
+  </div>
+</body>
+
 </html>
