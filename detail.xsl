@@ -7,6 +7,8 @@
     <xsl:template match="/">
         <h1>「<xsl:value-of select="//item[@no=$dp]/title" />」の詳細ページ</h1>
         <!-- <xsl:value-of select="my:searchform()" /> -->
+        <img src="{my:get-bookimg(//item[@no=$dp]/isbn/text())}" class="rounded mx-auto d-block" alt="img"
+            onerror="this.src='https://books.google.co.jp/googlebooks/images/no_cover_thumb.gif'; this.removeAttribute('onerror')"/>
         <table class="table table-striped table-hover">
             <thead>
                 <tr>

@@ -24,11 +24,9 @@ puts <<~HTML
 HTML
 
 ## 外部関数の定義
-# XML::XSLT.registerExtFunc("http://my.func", "partial-match") {|items, matcher, keyword|
-#     items.select{|i|
-#         i.get_elements("//" + matcher)[0].text =~  /#{keyword.force_encoding("UTF-8")}/
-#     }
-# }
+XML::XSLT.registerExtFunc("http://my.func", "get-bookimg") {|no|
+    "https://cover.openbd.jp/#{no[0]}.jpg"
+}
 XML::XSLT.registerExtFunc("http://my.func", "searchform") {
     puts  <<~HTML
         <form action="result.cgi" method="GET" role="form" class="form-horizontal">
@@ -64,6 +62,12 @@ puts xslt.serve
 
 puts <<~HTML
         </div>
+        <footer class="page-footer font-small white">
+            <div class="footer-copyright text-center py-3">
+                &copy; 2020 Copyright: Haruna(eggplants)
+                Repository: <a href="https://github.com/eggplants/unko_mark">Here.</a>
+            </div>
+        </footer>
     </body>
 </html>
 HTML

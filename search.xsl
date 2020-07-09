@@ -9,7 +9,8 @@
         <p>
         「<xsl:value-of select="$type" />:
         <xsl:value-of select="$keyword" />」の検索結果:
-        <xsl:value-of select="count(//item[$keyword != '' and contains(creator, $keyword)])" />件
+        <xsl:value-of
+        select="count(//item[*[local-name() = $type][$keyword != '' and contains(.,$keyword)]])" />件
         </p>
 
         <xsl:value-of select="my:searchform()" />
@@ -18,6 +19,8 @@
             <thead>
                 <tr>
                     <th scope="col">#</th>
+                    <th scope="col">No.</th>
+                    <th scope="col">書影</th>
                     <th scope="col">書名</th>
                     <th scope="col">著者</th>
                 </tr>
@@ -26,14 +29,18 @@
                 <!-- <xsl:apply-templates
                 select="my:partial-match(//item, $type, $keyword)" /> -->
                 <xsl:apply-templates
-                select="//item[$keyword != '' and contains(creator, $keyword)]" />
+                select="//item[*[local-name() = $type][$keyword != '' and contains(.,$keyword)]]" />
             </tbody>
         </table>
     </xsl:template>
 
     <xsl:template match="item">
         <tr>
+            <th scope="row"><xsl:value-of select="position()" /></th>
             <th scope="row"><xsl:value-of select="@no" /></th>
+            <td><img src="{my:get-bookimg(isbn/text())}" width="50"  alt="img"
+            onerror="this.src='https://books.google.co.jp/googlebooks/images/no_cover_thumb.gif'; this.removeAttribute('onerror')"/></td>
+            <!-- <td><xsl:value-of select="my:get-bookimg(isbn/text())" /></td> -->
             <td><a href="detail.cgi?dp={@no}"><xsl:value-of select="title" /></a></td>
             <td><a href="result.cgi?keyword={creator}&amp;type=creator"><xsl:value-of select="creator" /></a></td>
         </tr>
