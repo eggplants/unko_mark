@@ -26,8 +26,6 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- <xsl:apply-templates
-                select="my:partial-match(//item, $type, $keyword)" /> -->
                 <xsl:apply-templates
                 select="//item[*[local-name() = $type][$keyword != '' and contains(.,$keyword)]]" />
             </tbody>
@@ -40,7 +38,6 @@
             <th scope="row"><xsl:value-of select="@no" /></th>
             <td><img src="{my:get-bookimg(isbn/text())}" width="50"  alt="img"
             onerror="this.src='https://books.google.co.jp/googlebooks/images/no_cover_thumb.gif'; this.removeAttribute('onerror')"/></td>
-            <!-- <td><xsl:value-of select="my:get-bookimg(isbn/text())" /></td> -->
             <td><a href="detail.cgi?dp={@no}"><xsl:value-of select="title" /></a></td>
             <td>
                 <xsl:for-each select="my:split(creator/text())" >

@@ -56,9 +56,9 @@ XML::XSLT.registerExtFunc("http://my.func", "searchform") {
                     <option value="publisher">出版者</option>
                     <option value="description">説明</option>
                     <option value="price">価格</option>
-                    <option value="year">年</option>
+                    <option value="date">年</option>
                     <option value="isbn">ISBN</option>
-                    <option value="keyword">キーワード</option>
+                    <option value="keywords">キーワード</option>
                 </select>
                 <span class="input-group-btn">
                     <button type="submit" class="btn btn-primary">検索</button>
